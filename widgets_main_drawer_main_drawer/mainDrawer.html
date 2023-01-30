@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the mainDrawer function from the main_drawer library, for the Dart programming language.">
+  <title>mainDrawer function - main_drawer library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../" data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">okr_dashboard</a></li>
+    <li><a href="../widgets_main_drawer_main_drawer/widgets_main_drawer_main_drawer-library.html">main_drawer</a></li>
+    <li class="self-crumb">mainDrawer function</li>
+  </ol>
+  <div class="self-name">mainDrawer</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-function">mainDrawer</span> function 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+ 
+</h1></div>
+
+    <section class="multi-line-signature">
+        
+
+<span class="returntype"><a href="https://api.flutter.dev/flutter/widgets/Widget-class.html">Widget</a></span>
+<span class="name ">mainDrawer</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="mainDrawer-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span></span></li>
+</ol>)
+
+    </section>
+    
+<section class="desc markdown">
+  <p>MainDrawer / MainMenu on the left side of all pages, providing navigation buttons for the user</p>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">Widget mainDrawer(context) {
+  return Drawer(
+    child: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [CustomColor.primary, CustomColor.primary]
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        &#47;&#47;&#47;Company Logo
+        appBar: AppBar(
+          elevation: 0.0,
+          centerTitle: true,
+          title: Text(&quot;LOGO&quot;),
+          backgroundColor: CustomColor.primary,
+        ),
+        body: Stack(
+          children: [
+            Column(
+              children: [
+                const SizedBox(height: 5.0,),
+                ListTile(
+                  leading: const Icon(
+                    Icons.home_rounded,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    &#39;Startseite &#47; Dashboard&#39;,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                  onTap: () {
+                    &#47;&#47;&#47;Replaces this Widget with Dashboard on the Widget-Stack
+                    Navigator.pushReplacement(context, MaterialPageRoute(
+                      builder: (BuildContext context) =&gt; Dashboard()
+                    ));
+                  },
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                          title: const Text(
+                            &#39;Mein Profil&#39;,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.person,
+                            color: Colors.white,
+                          ),
+                          onTap: () {
+                            &#47;&#47;TODO: Profil-Page?
+                          },
+                        ),
+                        ListTile(
+                          title: const Text(
+                            &#39;Logout&#39;,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.exit_to_app,
+                            color: Colors.white,
+                          ),
+                          &#47;&#47;&#47;Async due to the Futures of SharedPreferences.getInstance and the removal of the authToken
+                          onTap: () async {
+                            SharedPreferences prefs = await SharedPreferences.getInstance();
+                            &#47;&#47;&#47;Stored authToken will be removed from SharedPreferences
+                            await prefs.remove(&quot;authToken&quot;);
+                            &#47;&#47;&#47;Replaces this Widget with LoginPage on the Widget-Stack
+                            Navigator.pushReplacement(context, MaterialPageRoute(
+                              builder: (BuildContext context) =&gt; LoginPage()
+                            ));
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../index.html">okr_dashboard</a></li>
+  <li><a href="../widgets_main_drawer_main_drawer/widgets_main_drawer_main_drawer-library.html">main_drawer</a></li>
+  <li class="self-crumb">mainDrawer function</li>
+</ol>
+
+
+    <h5>main_drawer library</h5>
+    <ol>
+
+
+
+
+
+  <li class="section-title"><a href="../widgets_main_drawer_main_drawer/widgets_main_drawer_main_drawer-library.html#functions">Functions</a></li>
+  <li><a href="../widgets_main_drawer_main_drawer/mainDrawer.html">mainDrawer</a></li>
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-left-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    okr_dashboard
+      1.0.0+1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
